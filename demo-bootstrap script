@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl start httpd
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+sudo aws s3 cp s3://necti-test-bucket/index.html /var/www/html/index.html
+sudo sudo systemctl reload httpd
